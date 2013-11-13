@@ -97,11 +97,11 @@ define(function () {
 
 
     sinusWave.prototype.createBufferData = function(_frequency, _i) {
-       
-        var buffer1 = Math.sin((_frequency * 2.0 * Math.PI * _i / this.sampleRate));
-        var buffer2 = Math.sin((_frequency * (1/2) * 2.0 * Math.PI * _i / this.sampleRate));
-        var buffer3 =  Math.sin((_frequency * (1 / 4) * 2.0 * Math.PI * _i / this.sampleRate));
+       var sample =  _frequency * 2.0 * Math.PI * _i / this.sampleRate;
 
+        var buffer1 = Math.sin(sample);
+        var buffer2 = Math.sin((1/2) * sample);
+        var buffer3 = Math.sin((1 /4) *sample);
 
 
 
