@@ -79,9 +79,7 @@ define(function () {
         //create oscillator data formel sin(x + 2*x)
         for (var i = 0; i < this.sampleLength; i++) {
             //create coord
-            bufferData[i]  = Math.sin((_frequency * 2.0 * Math.PI * i / this.sampleRate));
-            bufferData[i] += Math.sin((_frequency * (1/2) * 2.0 * Math.PI * i / this.sampleRate));
-            bufferData[i] += Math.sin((_frequency * (1 / 4) * 2.0 * Math.PI * i / this.sampleRate));
+            bufferData[i]  = this.createBufferData(_frequency, i);
 
             //sounds tend to click if there are big value differences so we just fade them in and out
             if (i <= this.sampleLength * (fadeSpeed / 100))
@@ -94,6 +92,20 @@ define(function () {
             //special code für hannes =)
             //bufferData[i] *= (i <= this.sampleLength/fadeSpeed) ? (i/(this.sampleLength/fadeSpeed)) : ((this.sampleLength-i)/(this.sampleLength/fadeSpeed));
         }
+    };
+
+
+
+    sinusWave.prototype.createBufferData = function(_frequency, _i) {
+       
+        var buffer1 = Math.sin((_frequency * 2.0 * Math.PI * _i / this.sampleRate));
+        var buffer2 = Math.sin((_frequency * (1/2) * 2.0 * Math.PI * _i / this.sampleRate));
+        var buffer3 =  Math.sin((_frequency * (1 / 4) * 2.0 * Math.PI * _i / this.sampleRate));
+
+
+
+
+        return buffer1 + buffer2 + buffer3;
     };
 
     /**
