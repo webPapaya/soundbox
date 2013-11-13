@@ -1,0 +1,148 @@
+/**
+ * styles.css
+ *
+ * university:  University of Applied Sciences Salzburg
+ * studie:      MultiMediaTechnology
+ * fhs-nummer:  fhs34784
+ * usage:	    Basisquaifikation 1 (QPT1)
+ * author:      Thomas Mayrhofer (thomas@mayrhofer.at)
+ *
+ */
+
+body {
+    overflow: hidden;
+    background: #000;
+}
+
+.visual {
+    width: 100% !important;
+    position: absolute;
+}
+
+.menu {
+    z-index: 99;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.menu a {
+    color: #fff !important;
+}
+
+.about a {
+    color: #fff;
+}
+
+.overlay {
+    display: none;
+    z-index: 99;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.7);
+}
+
+.overlay-text {
+    background: #fff;
+    box-shadow: 0 0 5px 3px #000000;
+    opacity: 1;
+    width: 500px;
+    margin: 100px auto 0;
+}
+
+
+.menu li {
+    float: left;
+    padding: 0 10px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.overlay-text a:hover {
+    color: #216489;
+}
+
+h1, h2 {
+    padding: 20px;
+    margin: 0;
+}
+
+h2 {
+    padding: 10px 20px;
+}
+
+#loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay p {
+    padding: 0 20px;
+}
+
+.overlay ul {
+    margin: 0;
+}
+
+.overlay li {
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #eeeeee;
+}
+.overlay li:first-child {
+    border-top: 1px solid #eeeeee;
+
+}
+
+.overlay a{
+    padding: 15px 20px;
+    display: block;
+}
+
+.overlay .close {
+    text-align: center;
+    padding: 10px;
+    color: #555555;
+    font-size: 0.9em;
+}
+
+.overlay a:hover {
+    background-color: #dddddd;
+}
+
+form {
+    padding: 0 20px;
+}
+
+input {
+    border-width: 0 0 1px !important;
+    margin-bottom: 0 !important;
+}
+
+label {
+    font-weight: normal;
+    font-size: 0.9em;
+    padding-left: 4px;
+}
+
+
+#load-text span {
+    display: inline-block;
+}
+
+.overlay.title {
+    float: left;
+}
+
+.overlay .date {
+    float: right;
+    font-size: 0.8em;
+}
+
+
+

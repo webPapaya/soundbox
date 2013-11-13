@@ -1,0 +1,29 @@
+Lieber Herr Mayrhofer,
+
+Hier die erste Beurteilung von
+http://soundbox.multimediatechnology.at/
+
+Sie haben mit eine gute Idee umgesetzt. Dabei haben
+Sie die neue Audio API und WebGL verwendet, sind damit über den
+Stoff der Lehrveranstaltungen hinaus gegangen, und haben
+sehr modernes Javascript geschreiben. 
+
+Sie haben nicht alle geforderten Dokument abgegeben:
+Technische Dokumentation + Resumé fehlen.  Lesen Sie den Leitfaden!
+
+Verbesserungen
+
+2) save + load reparieren.
+
+
+
+
+Diverses
+==========
+
+* Fehlermeldung in der Konsole: 
+  Blocked a frame with origin "http://soundbox.multimediatechnology.at" 
+  from accessing a frame with origin "http://www.youtube.com". 
+  Protocols, domains, and ports must match.
+
+* Iframe: in HTML5 gibts kein Attribut frameborder mehr.
