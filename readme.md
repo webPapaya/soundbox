@@ -27,6 +27,10 @@ there have been 3 unused variables in sinusWave.prototype.getSample
 i just removed them
 
 
+##deleted some unused files and classes
+
+
+
 
 
 
