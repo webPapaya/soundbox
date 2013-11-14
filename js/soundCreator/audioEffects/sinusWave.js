@@ -4,7 +4,7 @@
  * university:  University of Applied Sciences Salzburg
  * studie:      MultiMediaTechnology
  * fhs-nummer:  fhs34784
- * usage:	    Basisquaifikation 1 (QPT1)
+ * usage:        Basisquaifikation 1 (QPT1)
  * author:      Thomas Mayrhofer (thomas@mayrhofer.at)
  *
  * creates an simple sinus sample
@@ -56,8 +56,8 @@ define(function () {
         };
 
         var i = 0;
-        for(var t = 1; t <= 1; t++)
-            for(var note in this.notes) {
+        for (var t = 1; t <= 1; t++)
+            for (var note in this.notes) {
                 this.sampleFrequencies[i] = {};
                 this.sampleFrequencies[i].frequency = this.notes[note] * t;
                 this.sampleFrequencies[i].buffer = this.audioContext.createBuffer(1, this.sampleLength, this.sampleRate);
@@ -73,21 +73,13 @@ define(function () {
      * - adds fade in and out to sample
      */
     sinusWave.prototype.createSample = function (_frequency, _sampleNr) {
-        var fadeSpeed = 10; //in procentage 10 means 10% of samples fade in and 10% fade out (max 50)
+
         var bufferData = this.sampleFrequencies[_sampleNr].bufferData;
 
         //create oscillator data formel sin(x + 2*x)
         for (var i = 0; i < this.sampleLength; i++) {
-            //create coord
-            bufferData[i]  = this.createBufferData(_frequency, i);
-
-            //sounds tend to click if there are big value differences so we just fade them in and out
-            if (i <= this.sampleLength * (fadeSpeed / 100))
-                bufferData[i] *= i / (this.sampleLength / fadeSpeed);
-            else if (i > this.sampleLength * (1 - fadeSpeed / 100))
-                bufferData[i] *= (this.sampleLength - i) / (this.sampleLength / fadeSpeed);
-
-            bufferData[i] *= 0.99; //protects clipping
+            bufferData[i] = this.createBufferData(_frequency, i);
+            bufferData[i] = this.preventClipping(bufferData[i], i);
 
             //special code für hannes =)
             //bufferData[i] *= (i <= this.sampleLength/fadeSpeed) ? (i/(this.sampleLength/fadeSpeed)) : ((this.sampleLength-i)/(this.sampleLength/fadeSpeed));
@@ -95,18 +87,31 @@ define(function () {
     };
 
 
-
-    sinusWave.prototype.createBufferData = function(_frequency, _i) {
-       var sample =  _frequency * 2.0 * Math.PI * _i / this.sampleRate;
+    sinusWave.prototype.createBufferData = function (_frequency, _i) {
+        var sample = _frequency * 2.0;
+        sample *= Math.PI * _i;
+        sample /= this.sampleRate;
 
         var buffer1 = Math.sin(sample);
-        var buffer2 = Math.sin((1/2) * sample);
-        var buffer3 = Math.sin((1 /4) *sample);
-
-
+        var buffer2 = Math.sin((1 / 2) * sample);
+        var buffer3 = Math.sin((1 / 4) * sample);
 
         return buffer1 + buffer2 + buffer3;
     };
+
+    sinusWave.prototype.preventClipping = function(bufferData, i) {
+        var fadeSpeed = 10; //in procentage 10 means 10% of samples fade in and 10% fade out (max 50)
+
+        if (i <= this.sampleLength * (fadeSpeed / 100))
+            bufferData *= i / (this.sampleLength / fadeSpeed);
+        else if (i > this.sampleLength * (1 - fadeSpeed / 100))
+            bufferData *= (this.sampleLength - i) / (this.sampleLength / fadeSpeed);
+
+        bufferData *= 0.99; //protects clipping
+
+        return bufferData;
+    };
+
 
     /**
      * connects buffer source with source nodes
@@ -114,7 +119,7 @@ define(function () {
      * @return {node: audioSourceNode; source: audioSource}
      */
     sinusWave.prototype.getSample = function (_sampleNr) {
-        var audioSource, gainNode, delayNode, rtnNode, compressor;
+        var audioSource, rtnNode;
         var sampleNr = typeof _sampleNr !== 'undefined' ? _sampleNr : 0;
 
         //create audio source from oscillator data
