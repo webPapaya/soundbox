@@ -20,4 +20,14 @@ _frequency * 2.0 * Math.PI * _i / this.sampleRate;
 this snippet was called 3 times and has now been cached in a variable
 
 
+##removed unused variables
+datei js/soundCreator/audioEffects/sinusWave.js
+
+there have been 3 unused variables in sinusWave.prototype.getSample
+i just removed them
+
+
+
+
+
 
