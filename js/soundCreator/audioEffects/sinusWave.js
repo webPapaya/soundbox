@@ -75,7 +75,6 @@ define(function () {
     sinusWave.prototype.createSample = function (_frequency, _sampleNr) {
 
         var bufferData = this.sampleFrequencies[_sampleNr].bufferData;
-
         //create oscillator data formel sin(x + 2*x)
         for (var i = 0; i < this.sampleLength; i++) {
             bufferData[i] = this.createBufferData(_frequency, i);
