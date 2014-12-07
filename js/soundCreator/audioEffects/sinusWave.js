@@ -19,11 +19,11 @@ define(function () {
         this.audioContext = _ctx;
 
         //create gain node
-        this.gainNode = this.audioContext.createGainNode();
+        this.gainNode = this.audioContext.createGain();
         this.gainNode.gain.value = 0.5;
 
         //create delay node
-        this.delayNode = this.audioContext.createDelayNode();
+        this.delayNode = this.audioContext.createDelay();
         this.delayNode.delayTime.value = 0.15;
         this.compressor = this.audioContext.createDynamicsCompressor();
         this.sampleFrequencies = [];

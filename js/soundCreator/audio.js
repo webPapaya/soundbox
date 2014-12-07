@@ -24,7 +24,7 @@ define(dep(audioDependencies), function () {
         this.ctx = new webkitAudioContext;
         this.analyser = this.ctx.createAnalyser();
         this.compressor = this.ctx.createDynamicsCompressor();
-        this.gainMaster = this.ctx.createGainNode();
+        this.gainMaster = this.ctx.createGain();
         this.gainMaster.gain.value = 0.9;
 
         this.patterns = []; //pattern[0] = mouse coordinate
@@ -62,7 +62,8 @@ define(dep(audioDependencies), function () {
         this.compressor.connect(this.analyser);
         this.analyser.connect(this.ctx.destination);
 
-        sample.source.noteOn(0);
+	sample.source.start(0);
+        
     };
 
     /**
