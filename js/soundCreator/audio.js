@@ -21,7 +21,7 @@ var audioDependencies = {
 define(dep(audioDependencies), function () {
     audio = function (baseClass) {
         this.baseClass = baseClass;
-        this.ctx = new webkitAudioContext;
+        this.ctx = new AudioContext();
         this.analyser = this.ctx.createAnalyser();
         this.compressor = this.ctx.createDynamicsCompressor();
         this.gainMaster = this.ctx.createGain();
