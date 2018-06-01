@@ -16,8 +16,7 @@
 // add dependencies
 // json - object-name: file
 var canvasDependencies = {
-    "gridBackground": "visualEffects/gridBackground",
-    "mousePointer": "visualEffects/mousePointer"
+    "gridBackground": "visualEffects/gridBackground"
 };
 
 define(dep(canvasDependencies), function () {
