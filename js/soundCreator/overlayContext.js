@@ -192,7 +192,8 @@ define(["overlay"], function () {
 
           header.innerHTML    = "Links";
 
-          links.innerHTML     = "<li><a href='http://fh-salzburg.ac.at'>FH Salzburg</a></li>" +
+          links.innerHTML     = "<li><a href='https://github.com/webpapaya/soundbox'>Github</a></li>" +
+                                "<li><a href='http://fh-salzburg.ac.at'>FH Salzburg</a></li>" +
                                 "<li><a href='http://thomas.mayrhofer.at'>Personal Website</a></li>" +
                                 "<li><a href='http://twitter.com/webpapaya'>Twitter (webpapaya)</a></li>" +
                                 "<li><a href='http://modernizr.com'>modernizr</a></li>" +
